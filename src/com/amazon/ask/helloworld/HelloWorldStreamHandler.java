@@ -1,46 +1,39 @@
-/*
-     Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-
-     Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file
-     except in compliance with the License. A copy of the License is located at
-
-         http://aws.amazon.com/apache2.0/
-
-     or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for
-     the specific language governing permissions and limitations under the License.
-*/
-
 package com.amazon.ask.helloworld;
 
 import com.amazon.ask.Skill;
-import com.amazon.ask.Skills;
-import com.amazon.ask.SkillStreamHandler;
-import com.amazon.ask.helloworld.handlers.CancelandStopIntentHandler;
+import com.amazon.ask.builder.StandardSkillBuilder;
 import com.amazon.ask.helloworld.handlers.HelloWorldIntentHandler;
-import com.amazon.ask.helloworld.handlers.HelpIntentHandler;
-import com.amazon.ask.helloworld.handlers.SessionEndedRequestHandler;
 import com.amazon.ask.helloworld.handlers.LaunchRequestHandler;
-import com.amazon.ask.helloworld.handlers.FallbackIntentHandler;
+import com.amazon.ask.model.RequestEnvelope;
+import com.amazon.ask.model.ResponseEnvelope;
+import com.amazon.ask.util.JacksonSerializer;
+import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
+import com.amazonaws.util.IOUtils;
 
-public class HelloWorldStreamHandler extends SkillStreamHandler {
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 
-    private static Skill getSkill() {
-        return Skills.standard()
-                .addRequestHandlers(
-                        new CancelandStopIntentHandler(),
-                        new HelloWorldIntentHandler(),
-                        new HelpIntentHandler(),
-                        new LaunchRequestHandler(),
-                        new SessionEndedRequestHandler(),
-                        new FallbackIntentHandler())
-                // Add your skill id below
-                //.withSkillId("")
-                .build();
-    }
+public class HelloWorldStreamHandler implements RequestStreamHandler {
+    private final Skill skill;
+    private final JacksonSerializer serializer;
 
     public HelloWorldStreamHandler() {
-        super(getSkill());
+        this.skill = new StandardSkillBuilder()
+                .addRequestHandler(new LaunchRequestHandler())
+                .addRequestHandler(new HelloWorldIntentHandler())
+                .build();
+        this.serializer = new JacksonSerializer();
     }
 
+    @Override
+    public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
+        String request = IOUtils.toString(inputStream);
+        RequestEnvelope requestEnvelope = serializer.deserialize(request, RequestEnvelope.class);
+        ResponseEnvelope responseEnvelope = skill.invoke(requestEnvelope);
+        byte[] response = serializer.serialize(responseEnvelope).getBytes(StandardCharsets.UTF_8);
+        outputStream.write(response);
+    }
 }
