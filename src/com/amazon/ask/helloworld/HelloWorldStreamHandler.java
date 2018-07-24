@@ -4,6 +4,7 @@ import com.amazon.ask.Skill;
 import com.amazon.ask.builder.StandardSkillBuilder;
 import com.amazon.ask.helloworld.handlers.HelloWorldIntentHandler;
 import com.amazon.ask.helloworld.handlers.LaunchRequestHandler;
+import com.amazon.ask.helloworld.handlers.PlayVideoIntentHandler;
 import com.amazon.ask.model.RequestEnvelope;
 import com.amazon.ask.model.ResponseEnvelope;
 import com.amazon.ask.util.JacksonSerializer;
@@ -24,6 +25,7 @@ public class HelloWorldStreamHandler implements RequestStreamHandler {
         this.skill = new StandardSkillBuilder()
                 .addRequestHandler(new LaunchRequestHandler())
                 .addRequestHandler(new HelloWorldIntentHandler())
+                .addRequestHandler(new PlayVideoIntentHandler())
                 .build();
         this.serializer = new JacksonSerializer();
     }
