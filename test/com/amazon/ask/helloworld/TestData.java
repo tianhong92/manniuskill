@@ -1,7 +1,7 @@
 package com.amazon.ask.helloworld;
 
 public class TestData {
-    public static String getRequestContent() {
+    public static String getLaunchRequestContent() {
         return "{\n" +
                 "\t\"version\": \"1.0\",\n" +
                 "\t\"session\": {\n" +
@@ -39,4 +39,6 @@ public class TestData {
                 "\t}\n" +
                 "}";
     }
+
+
 }

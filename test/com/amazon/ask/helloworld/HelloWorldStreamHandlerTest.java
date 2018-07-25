@@ -11,10 +11,10 @@ import static org.junit.Assert.*;
 public class HelloWorldStreamHandlerTest {
 
     @org.junit.Test
-    public void handleRequest() {
+    public void LanuchIntentTest() {
         HelloWorldStreamHandler handler = new HelloWorldStreamHandler();
         try {
-            StringInputStream inputStream = new StringInputStream(TestData.getRequestContent());
+            StringInputStream inputStream = new StringInputStream(TestData.getLaunchRequestContent());
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             handler.handleRequest(inputStream, outputStream,null);
             String response = outputStream.toString();
@@ -22,6 +22,20 @@ public class HelloWorldStreamHandlerTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
+//    @org.junit.Test
+//    public void PlayVideoIntentTest() {
+//        HelloWorldStreamHandler handler = new HelloWorldStreamHandler();
+//        try {
+//            StringInputStream inputStream = new StringInputStream(TestData.getPlayVideoRequestContent());
+//            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//            handler.handleRequest(inputStream, outputStream,null);
+//            String response = outputStream.toString();
+//            Assert.assertNotNull(response);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
 }
