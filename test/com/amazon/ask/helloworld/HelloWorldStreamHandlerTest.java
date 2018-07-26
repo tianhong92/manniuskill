@@ -24,18 +24,20 @@ public class HelloWorldStreamHandlerTest {
         }
     }
 
-//    @org.junit.Test
-//    public void PlayVideoIntentTest() {
-//        HelloWorldStreamHandler handler = new HelloWorldStreamHandler();
-//        try {
-//            StringInputStream inputStream = new StringInputStream(TestData.getPlayVideoRequestContent());
-//            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//            handler.handleRequest(inputStream, outputStream,null);
-//            String response = outputStream.toString();
-//            Assert.assertNotNull(response);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
+    @org.junit.Test
+    public void DiscoveryRequestTest() {
+        HelloWorldStreamHandler handler = new HelloWorldStreamHandler();
+        try {
+            StringInputStream inputStream = new StringInputStream(TestData.discoveryRequestContent());
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            handler.handleRequest(inputStream, outputStream,null);
+            String response = outputStream.toString();
+            Assert.assertNotNull(response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

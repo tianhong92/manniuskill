@@ -33,9 +33,9 @@ public class HelloWorldStreamHandler implements RequestStreamHandler {
     @Override
     public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
         String request = IOUtils.toString(inputStream);
-        RequestEnvelope requestEnvelope = serializer.deserialize(request, RequestEnvelope.class);
-        ResponseEnvelope responseEnvelope = skill.invoke(requestEnvelope);
-        byte[] response = serializer.serialize(responseEnvelope).getBytes(StandardCharsets.UTF_8);
-        outputStream.write(response);
+//        RequestEnvelope requestEnvelope = serializer.deserialize(request, RequestEnvelope.class);
+//        ResponseEnvelope responseEnvelope = skill.invoke(requestEnvelope);
+//        byte[] response = serializer.serialize(responseEnvelope).getBytes(StandardCharsets.UTF_8);
+//        outputStream.write(response);
     }
 }

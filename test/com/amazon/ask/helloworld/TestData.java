@@ -40,5 +40,24 @@ public class TestData {
                 "}";
     }
 
+    public static String discoveryRequestContent() {
+        return "{\n" +
+                "    \"directive\": {\n" +
+                "        \"header\": {\n" +
+                "            \"namespace\": \"Alexa.Discovery\",\n" +
+                "            \"name\": \"Discover\",\n" +
+                "            \"payloadVersion\": \"3\",\n" +
+                "            \"messageId\": \"1bd5d003-31b9-476f-ad03-71d471922820\"\n" +
+                "        },\n" +
+                "        \"payload\": {\n" +
+                "            \"scope\": {\n" +
+                "                \"type\": \"BearerToken\",\n" +
+                "                \"token\": \"access-token-from-skill\"\n" +
+                "            }\n" +
+                "        }\n" +
+                "    }\n" +
+                "}";
+    }
+
 
 }
