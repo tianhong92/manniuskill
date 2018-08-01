@@ -1,4 +1,4 @@
-package com.amazon.ask.helloworld;
+package com.bullyun.smarthome.testData;
 
 public class TestData {
     public static String getLaunchRequestContent() {
@@ -182,63 +182,7 @@ public class TestData {
                 "}";
     }
 
-    public static String turnOnRequestContent() {
-        return "{\n" +
-                "    \"directive\": {\n" +
-                "        \"endpoint\": {\n" +
-                "            \"cookie\": {\n" +
-                "                \"detail1\": \"For simplicity, this is the only appliance\",\n" +
-                "                \"detail2\": \"that has some values in the additionalApplianceDetails\"\n" +
-                "            },\n" +
-                "            \"endpointId\": \"endpoint-001\",\n" +
-                "            \"scope\": {\n" +
-                "                \"token\": \"Atza|IwEBIBh7332gFAiNINH5Ic0WD4gd4vkKaJ_YlUcqUETe5l3Hlg8QvjgaUVRkT7lJRca1sE_7pG6EPswuU3ToDM453ysSqGDKpjzazMfY6j3YRdarzJNQpwFFP_7mlKGV32_rm2hKHLl3ptXC0rJD5Wg0f3NrOUbnR2pNduNYqdr4gsN7r6vtQOAJVnb4suiO9NL8-5LIdw2G4CXmxRyvJTUoIkRMLkoAQfM7sb7_siF-XjtBTWxUEJb0jwX45cCyYVWGkf8P_GGDOO1w7QdNW56XpCTwN5r2om6RYGvMwB1oK5K_Zca_2ySxFU50RpSyBIYAZClJC3z8PWFsyQb5EdcZUf81c7yNDGuUMXVXa9mWafp2A4uOOVvOas5FW4h5N45W17ahCr1hWlt6E-q6KGl85OggJvpYEuZ7WuW0D8fbMK9PECmNESuNrjm_XPE3CWNvlXQQGZ2ByNa2AiAk4ZAaD2fp0Uqnqb6anE4iJjDQV6oY0jsdNF1eFt_shLg6ewHtLs6Ppriu0s_MtiHYZNGgCqV_\",\n" +
-                "                \"type\": \"BearerToken\"\n" +
-                "            }\n" +
-                "        },\n" +
-                "        \"header\": {\n" +
-                "            \"correlationToken\": \"AAAAAAAAAADod5g3lZyAmCnF1iyoZzMkDAIAAAAAAABPgIjExMfaAuajkz6oHWPNIvLNyd2q+wSnX7UHElKAjSwJO/b3tfmUVBleckPH++/SWdbfChfrt2DcckUZFCSZx5QzsRMZBAi8OVsXVaauA7k4fTdqm4FXvYqsgLv2ZB/kDnEpgX3irJ8S+3W2AbhQkKiWbAPdB5IuJNlXoYVFdoiwCc6dQaLrjLcjgCESxtEqIyz8ctwfhE9EkLzIznYBQSyTK9PzJL3kjJQbvX6mGJlh+VKGHgCnf7DXE6+V/89cjYj6PBhClqgyoE6n7Ld5KNJNLTD3bhYVaEaT1dKrEbC1kod55QPkGk0SYOJRxCw5EuuKMlD0UlqwGEZTX5saCGVE3xtqJvL/8/IHXVxkGhokTNAJJncX2VmfRyvJOzrOQNfaxac3+Emj1N38AeYPGWLMvvF9Gbiku3pDGWdz6OL1Vx0aJvbVt1WXbaPLQelCzi6PZK6PU8J1yI5KbNy3l99/cyKP3kf//+KhVrdDTUtsHP0q/C3gnlpSdxZ5OuBCFCXuiQSay0iIRN+735cteDTqLsPaIh2y1dtZB4imDZfDnumcHxw76avQwQE/N5NaOQyvJq8SJyPCpMjDwrwUtQJm5vDfro7Gy1pdbfKzugaX96SSXKaBvePXpuHgvngs3HJHolPsWTxPNTy+AVvhb517dvLrdF1WMcLQ0SBEGZfLLSGiOTP+Ya207Q==\",\n" +
-                "            \"messageId\": \"09370d7c-3bf5-40e1-a8bc-9ba1f55b0d7c\",\n" +
-                "            \"name\": \"TurnOn\",\n" +
-                "            \"namespace\": \"Alexa.PowerController\",\n" +
-                "            \"payloadVersion\": \"3\"\n" +
-                "        },\n" +
-                "        \"payload\": {}\n" +
-                "    }\n" +
-                "}";
-    }
 
-    public static String turnOnResponseContent() {
-        return "{\n" +
-                "    \"context\": {\n" +
-                "        \"properties\": [\n" +
-                "            {\n" +
-                "                \"name\": \"powerState\",\n" +
-                "                \"namespace\": \"Alexa.PowerController\",\n" +
-                "                \"timeOfSample\": \"2018-08-01T09:19:53.00Z\",\n" +
-                "                \"uncertaintyInMilliseconds\": 500,\n" +
-                "                \"value\": \"ON\"\n" +
-                "            }\n" +
-                "        ]\n" +
-                "    },\n" +
-                "    \"event\": {\n" +
-                "        \"endpoint\": {\n" +
-                "            \"endpointId\": \"endpoint-001\",\n" +
-                "            \"scope\": {\n" +
-                "                \"token\": \"access-token-from-Amazon\",\n" +
-                "                \"type\": \"BearerToken\"\n" +
-                "            }\n" +
-                "        },\n" +
-                "        \"header\": {\n" +
-                "            \"correlationToken\": \"AAAAAAAAAADod5g3lZyAmCnF1iyoZzMkDAIAAAAAAABPgIjExMfaAuajkz6oHWPNIvLNyd2q+wSnX7UHElKAjSwJO/b3tfmUVBleckPH++/SWdbfChfrt2DcckUZFCSZx5QzsRMZBAi8OVsXVaauA7k4fTdqm4FXvYqsgLv2ZB/kDnEpgX3irJ8S+3W2AbhQkKiWbAPdB5IuJNlXoYVFdoiwCc6dQaLrjLcjgCESxtEqIyz8ctwfhE9EkLzIznYBQSyTK9PzJL3kjJQbvX6mGJlh+VKGHgCnf7DXE6+V/89cjYj6PBhClqgyoE6n7Ld5KNJNLTD3bhYVaEaT1dKrEbC1kod55QPkGk0SYOJRxCw5EuuKMlD0UlqwGEZTX5saCGVE3xtqJvL/8/IHXVxkGhokTNAJJncX2VmfRyvJOzrOQNfaxac3+Emj1N38AeYPGWLMvvF9Gbiku3pDGWdz6OL1Vx0aJvbVt1WXbaPLQelCzi6PZK6PU8J1yI5KbNy3l99/cyKP3kf//+KhVrdDTUtsHP0q/C3gnlpSdxZ5OuBCFCXuiQSay0iIRN+735cteDTqLsPaIh2y1dtZB4imDZfDnumcHxw76avQwQE/N5NaOQyvJq8SJyPCpMjDwrwUtQJm5vDfro7Gy1pdbfKzugaX96SSXKaBvePXpuHgvngs3HJHolPsWTxPNTy+AVvhb517dvLrdF1WMcLQ0SBEGZfLLSGiOTP+Ya207Q==\",\n" +
-                "            \"messageId\": \"3cc5a361-95af-4061-91e8-7a2e36ca1b27\",\n" +
-                "            \"name\": \"Response\",\n" +
-                "            \"namespace\": \"Alexa\",\n" +
-                "            \"payloadVersion\": \"3\"\n" +
-                "        },\n" +
-                "        \"payload\": {}\n" +
-                "    }\n" +
-                "}";
-    }
+
 
 }

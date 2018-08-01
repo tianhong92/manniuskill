@@ -1,4 +1,4 @@
-package com.amazon.ask.helloworld.util;
+package com.bullyun.smarthome.util;
 
 import java.io.*;
 import java.net.HttpURLConnection;
