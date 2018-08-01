@@ -1,4 +1,4 @@
-package com.amazon.ask.helloworld;
+package com.amazon.ask.helloworld.testData;
 
 public class TestData {
     public static String getLaunchRequestContent() {
