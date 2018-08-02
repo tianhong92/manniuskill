@@ -15,7 +15,7 @@ import java.io.OutputStream;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 
 public class ManniuStreamHandler implements RequestStreamHandler {
-
+    private final JacksonSerializer serializer = new JacksonSerializer();;
     @Override
     public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
         String request = IOUtils.toString(inputStream);
