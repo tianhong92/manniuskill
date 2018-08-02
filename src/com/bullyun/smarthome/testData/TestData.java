@@ -63,7 +63,7 @@ public class TestData {
         return "{\n" +
                 "    \"event\": {\n" +
                 "        \"header\": {\n" +
-                "            \"messageId\": \"1d2ec5f9-954b-473b-9151-329158b5436c\",\n" +
+                "            \"messageId\": \"1d2ec5f9-954b-473b-9151-329158b5463c\",\n" +
                 "            \"name\": \"Discover.Response\",\n" +
                 "            \"namespace\": \"Alexa.Discovery\",\n" +
                 "            \"payloadVersion\": \"3\"\n" +
