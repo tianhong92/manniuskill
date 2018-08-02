@@ -69,7 +69,7 @@ public class TestData {
                 "            \"payloadVersion\": \"3\"\n" +
                 "        },\n" +
                 "        \"payload\": {\n" +
-                "            \"endpoints\": [\n" +
+                "            \"EndPoint\": [\n" +
                 "                {\n" +
                 "                    \"capabilities\": [\n" +
                 "                        {\n" +

@@ -15,7 +15,7 @@ public class ManniuStreamHandlerTest {
     public void handleRequest() {
         ManniuStreamHandler handler = new ManniuStreamHandler();
         try {
-            StringInputStream inputStream = new StringInputStream(TestData.getLaunchRequestContent());
+            StringInputStream inputStream = new StringInputStream(TestData.discoveryRequestContent());
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             handler.handleRequest(inputStream, outputStream,null);
             String response = outputStream.toString();
