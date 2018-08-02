@@ -63,13 +63,13 @@ public class TestData {
         return "{\n" +
                 "    \"event\": {\n" +
                 "        \"header\": {\n" +
-                "            \"messageId\": \"1d2ec5f9-954b-473b-9151-329158b5436c\",\n" +
+                "            \"messageId\": \"08fcc74b-4ae8-49d4-97df-1614ae5155a1\",\n" +
                 "            \"name\": \"Discover.Response\",\n" +
                 "            \"namespace\": \"Alexa.Discovery\",\n" +
                 "            \"payloadVersion\": \"3\"\n" +
                 "        },\n" +
                 "        \"payload\": {\n" +
-                "            \"EndPoint\": [\n" +
+                "            \"endpoints\": [\n" +
                 "                {\n" +
                 "                    \"capabilities\": [\n" +
                 "                        {\n" +
