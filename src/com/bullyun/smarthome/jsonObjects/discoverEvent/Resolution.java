@@ -3,6 +3,7 @@ package com.bullyun.smarthome.jsonObjects.discoverEvent;
 import lombok.Data;
 
 @Data
-public class DiscoverEvent {
-    private DiscoverEventBody event;
+public class Resolution {
+    private String width;
+    private String height;
 }

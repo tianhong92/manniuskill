@@ -1,5 +1,8 @@
 package com.bullyun.smarthome.jsonObjects.discoverEvent;
 
-public class DiscoverPayload {
+import lombok.Data;
+
+@Data
+public class DiscoverPayloadBody {
     private EndPoint[] endPoints;
 }

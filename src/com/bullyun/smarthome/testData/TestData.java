@@ -183,6 +183,65 @@ public class TestData {
     }
 
 
+    public static String getCapabilityContent() {
+        return "{\n" +
+                "  \"type\": \"AlexaInterface\",\n" +
+                "  \"interface\": \"Alexa.CameraStreamController\",\n" +
+                "  \"version\": \"3\",\n" +
+                "  \"cameraStreamConfigurations\": [\n" +
+                "    {\n" +
+                "      \"protocols\": [\n" +
+                "        \"RTSP\"\n" +
+                "      ],\n" +
+                "      \"resolutions\": [\n" +
+                "        {\n" +
+                "          \"width\": 1920,\n" +
+                "          \"height\": 1080\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"width\": 1280,\n" +
+                "          \"height\": 720\n" +
+                "        }\n" +
+                "      ],\n" +
+                "      \"authorizationTypes\": [\n" +
+                "        \"BASIC\"\n" +
+                "      ],\n" +
+                "      \"videoCodecs\": [\n" +
+                "        \"H264\",\n" +
+                "        \"MPEG2\"\n" +
+                "      ],\n" +
+                "      \"audioCodecs\": [\n" +
+                "        \"G711\"\n" +
+                "      ]\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"protocols\": [\n" +
+                "        \"RTSP\"\n" +
+                "      ],\n" +
+                "      \"resolutions\": [\n" +
+                "        {\n" +
+                "          \"width\": 1920,\n" +
+                "          \"height\": 1080\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"width\": 1280,\n" +
+                "          \"height\": 720\n" +
+                "        }\n" +
+                "      ],\n" +
+                "      \"authorizationTypes\": [\n" +
+                "        \"NONE\"\n" +
+                "      ],\n" +
+                "      \"videoCodecs\": [\n" +
+                "        \"H264\"\n" +
+                "      ],\n" +
+                "      \"audioCodecs\": [\n" +
+                "        \"AAC\"\n" +
+                "      ]\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}";
+    }
+
 
 
 }
