@@ -1,4 +1,4 @@
-package com.amazon.ask.helloworld.testData;
+package com.bullyun.smarthome.testData;
 
 public class TestData {
     public static String getLaunchRequestContent() {
@@ -69,7 +69,7 @@ public class TestData {
                 "            \"payloadVersion\": \"3\"\n" +
                 "        },\n" +
                 "        \"payload\": {\n" +
-                "            \"endpoints\": [\n" +
+                "            \"EndPoint\": [\n" +
                 "                {\n" +
                 "                    \"capabilities\": [\n" +
                 "                        {\n" +
