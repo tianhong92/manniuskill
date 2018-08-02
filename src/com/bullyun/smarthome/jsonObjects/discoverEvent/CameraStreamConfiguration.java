@@ -1,5 +1,8 @@
 package com.bullyun.smarthome.jsonObjects.discoverEvent;
 
+import lombok.Data;
+
+@Data
 public class CameraStreamConfiguration {
     private String[] protocols;
     private Resolution[] resolutions;

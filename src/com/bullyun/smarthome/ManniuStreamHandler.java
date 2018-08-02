@@ -1,6 +1,7 @@
 package com.bullyun.smarthome;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.bullyun.smarthome.assembleJson.DiscoverResponse;
 import com.bullyun.smarthome.testData.TestData;
 import com.amazon.ask.util.JacksonSerializer;
 import com.amazonaws.services.lambda.runtime.Context;
@@ -38,7 +39,8 @@ public class ManniuStreamHandler implements RequestStreamHandler {
 //        }
 
 
-        String response = TestData.discoveryResponseContent();
+        //String response = TestData.discoveryResponseContent();
+        String response = DiscoverResponse.getResponse();
 
         LambdaLogger logger = context.getLogger();
         logger.log("Get request2:");

@@ -22,7 +22,5 @@ public class EndPoint {
         this.friendlyName = "Camera";
         this.description = "This is a manniu camera";
         this.displayCategories = new String[]{"CAMERA"};
-        this.cookie = null;
-
     }
 }

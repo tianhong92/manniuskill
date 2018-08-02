@@ -4,6 +4,11 @@ import lombok.Data;
 
 @Data
 public class Resolution {
-    private String width;
-    private String height;
+    private int width;
+    private int height;
+
+    public Resolution(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
 }
