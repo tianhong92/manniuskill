@@ -17,7 +17,7 @@ public class test {
         DiscoverHeader header = new DiscoverHeader();
         DiscoverPayloadBody payload = new DiscoverPayloadBody();
         DiscoverCookie cookie = new DiscoverCookie();
-        EndPoint endPoint = new EndPoint("endpoint 001");
+        EndPoint endPoint = new EndPoint("endpoint 001", "Garden Camera");
         EndPoint[] endPoints = new EndPoint[]{ endPoint };
         DiscoverCapability discoverCapability = new DiscoverCapability("Alexa.CameraStreamController");
         DiscoverCapability[] discoverCapabilities = new DiscoverCapability[]{discoverCapability};

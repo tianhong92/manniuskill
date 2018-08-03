@@ -15,11 +15,11 @@ public class EndPoint {
 
     // Constructor and Getter Setter
 
-    public EndPoint(String endpointId) {
+    public EndPoint(String endpointId, String friendlyName) {
         this.endpointId = endpointId;
         this.manufacturerName = "Manniu tech";
         this.modelName = "model23";
-        this.friendlyName = "Camera";
+        this.friendlyName = friendlyName;
         this.description = "This is a manniu camera";
         this.displayCategories = new String[]{"CAMERA"};
     }
