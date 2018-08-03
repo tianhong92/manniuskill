@@ -1,7 +1,10 @@
 package com.bullyun.smarthome.jsonObjects.videoEvent;
 
+import lombok.Data;
+
 import java.util.UUID;
 
+@Data
 public class VideoHeader {
     private String namespace;
     private String name;

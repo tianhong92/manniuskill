@@ -2,6 +2,7 @@ package com.bullyun.smarthome;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bullyun.smarthome.assembleJson.DiscoverResponse;
+import com.bullyun.smarthome.assembleJson.VideoStreamingResponse;
 import com.bullyun.smarthome.testData.TestData;
 import com.amazon.ask.util.JacksonSerializer;
 import com.amazonaws.services.lambda.runtime.Context;
@@ -40,15 +41,16 @@ public class ManniuStreamHandler implements RequestStreamHandler {
 
 
         //String response = TestData.discoveryResponseContent();
-        String response = DiscoverResponse.getResponse();
+        //String response = DiscoverResponse.getResponse();
+        String response = VideoStreamingResponse.getResponse("correstoken1234", "endpoint001", "http:/video.com", "http://video.com");
 
-        LambdaLogger logger = context.getLogger();
-        logger.log("Get request2:");
-        logger.log(request);
-        logger.log("Get respones2:");
-        logger.log(response);
-        logger.log("end logger2!");
-
+//        LambdaLogger logger = context.getLogger();
+//        logger.log("Get request2:");
+//        logger.log(request);
+//        logger.log("Get respones2:");
+//        logger.log(response);
+//        logger.log("end logger2!");
+        System.out.println(response);
         byte[] byteResponse = response.getBytes("utf-8");
         outputStream.write(byteResponse);
     }
