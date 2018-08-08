@@ -3,6 +3,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bullyun.smarthome.assembleJson.DiscoverResponse;
 import com.bullyun.smarthome.assembleJson.VideoStreamingResponse;
+import com.bullyun.smarthome.jsonObjects.diviceList.ManniuDevice;
+import com.bullyun.smarthome.jsonObjects.diviceList.ManniuDeviceList;
 import com.bullyun.smarthome.testData.TestData;
 import com.amazon.ask.util.JacksonSerializer;
 import com.amazonaws.services.lambda.runtime.Context;
@@ -16,14 +18,16 @@ import java.io.OutputStream;
 
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 
+import static com.bullyun.smarthome.manniuResponse.DeviceList.getDeviceList;
+
 public class ManniuStreamHandler implements RequestStreamHandler {
     private final JacksonSerializer serializer = new JacksonSerializer();;
     @Override
     public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
         String request = IOUtils.toString(inputStream);
         // 判断请求类型
-//        JSONObject jo = JSON.parseObject(request);
-//        System.out.println(jo);
+        JSONObject jo = JSON.parseObject(request);
+        //System.out.println(jo);
 //        try {
 //            String requestType = jo.getJSONObject("directive").getJSONObject("header").get("name").toString();
 //            if(requestType.equals("Discover") || requestType.equals("ReportState")) {
@@ -39,17 +43,18 @@ public class ManniuStreamHandler implements RequestStreamHandler {
 //            System.out.println("Parse Request: NullPointerException");
 //        }
 
+        String token = jo.getJSONObject("directive").getJSONObject("payload").getJSONObject("scope").get("token").toString();
+        ManniuDeviceList list = getDeviceList(token);
+        String response = DiscoverResponse.getResponse(list);
 
-        //String response = TestData.discoveryResponseContent();
-        //String response = DiscoverResponse.getResponse();
-        String response = VideoStreamingResponse.getResponse("correstoken1234", "endpoint001", "http:/video.com", "http://video.com");
 
-//        LambdaLogger logger = context.getLogger();
-//        logger.log("Get request2:");
-//        logger.log(request);
-//        logger.log("Get respones2:");
-//        logger.log(response);
-//        logger.log("end logger2!");
+        LambdaLogger logger = context.getLogger();
+        logger.log("Get request:");
+        logger.log(request);
+        logger.log("Get respones:");
+        logger.log(response);
+        logger.log("end logger!");
+
         System.out.println(response);
         byte[] byteResponse = response.getBytes("utf-8");
         outputStream.write(byteResponse);

@@ -2,19 +2,30 @@ package com.bullyun.smarthome.assembleJson;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bullyun.smarthome.jsonObjects.discoverEvent.*;
+import com.bullyun.smarthome.jsonObjects.diviceList.ManniuDevice;
+import com.bullyun.smarthome.jsonObjects.diviceList.ManniuDeviceList;
 
 public class DiscoverResponse {
-    public static String getResponse() {
+    public static String getResponse(ManniuDeviceList list) {
         DiscoverEvent event = new DiscoverEvent();
         DiscoverEventBody eventBody = new DiscoverEventBody();
         DiscoverHeader header = new DiscoverHeader();
         DiscoverPayloadBody payload = new DiscoverPayloadBody();
         DiscoverCookie cookie = new DiscoverCookie();
-        EndPoint endPoint = new EndPoint("endpoint 001", "Garden Camera");
-        EndPoint[] endPoints = new EndPoint[]{ endPoint };
+
+        EndPoint[] endPoints = new EndPoint[list.getDevices().length];
         DiscoverCapability discoverCapability = new DiscoverCapability("Alexa.CameraStreamController");
         DiscoverCapability[] discoverCapabilities = new DiscoverCapability[]{discoverCapability};
-        endPoint.setCapabilities(discoverCapabilities);
+
+        for(int i = 0; i < list.getDevices().length; i++) {
+            String devName = list.getDevices()[i].getDev_name();
+            String sn = list.getDevices()[i].getSn();
+            EndPoint endPoint = new EndPoint(sn, devName);
+            endPoint.setCapabilities(discoverCapabilities);
+            endPoint.setCookie(cookie);
+            endPoints[i] = endPoint;
+        }
+
         CameraStreamConfiguration cameraStreamConfiguration = new CameraStreamConfiguration();
         CameraStreamConfiguration[] cameraStreamConfigurations = new CameraStreamConfiguration[]{cameraStreamConfiguration};
         discoverCapability.setCameraStreamConfigurations(cameraStreamConfigurations);
@@ -27,7 +38,6 @@ public class DiscoverResponse {
         event.setEvent(eventBody);
         eventBody.setHeader(header);
         eventBody.setPayload(payload);
-        endPoint.setCookie(cookie);
         payload.setEndpoints(endPoints);
 
         Object eventJson = JSONObject.toJSON(event);
