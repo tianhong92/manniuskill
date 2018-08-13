@@ -55,7 +55,7 @@ public class ManniuStreamHandler implements RequestStreamHandler {
                 String videoUrl = CameraStream.getSteamUrl(token, endpointId);
                 String response = VideoStreamingResponse.getResponse(correlationToken, endpointId, "", videoUrl);
 
-                logger.log("Get respones:");
+                logger.log("Get camera respones:");
                 logger.log(response);
                 logger.log("end logger!");
 
