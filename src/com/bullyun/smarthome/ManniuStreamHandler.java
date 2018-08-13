@@ -51,11 +51,13 @@ public class ManniuStreamHandler implements RequestStreamHandler {
         LambdaLogger logger = context.getLogger();
         logger.log("Get request:");
         logger.log(request);
+        logger.log("Get List");
+        logger.log(list.getDevices()[0].getDev_name());
+        logger.log(list.getDevices()[1].getDev_name());
         logger.log("Get respones:");
         logger.log(response);
         logger.log("end logger!");
 
-        System.out.println(response);
         byte[] byteResponse = response.getBytes("utf-8");
         outputStream.write(byteResponse);
     }
