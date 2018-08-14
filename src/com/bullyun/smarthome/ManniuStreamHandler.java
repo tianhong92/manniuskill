@@ -48,6 +48,7 @@ public class ManniuStreamHandler implements RequestStreamHandler {
                 outputStream.write(byteResponse);
 
             } else if (requestType.equals("InitializeCameraStreams")) {
+                logger.log("get here!!!!!!!!!!!!!!!!!!!!!");
                 String correlationToken = jo.getJSONObject("directive").getJSONObject("header").get("correlationToken").toString();
                 String token = jo.getJSONObject("directive").getJSONObject("endpoint").getJSONObject("scope").get("token").toString();
                 String endpointId = jo.getJSONObject("directive").getJSONObject("endpoint").get("endpointId").toString();
