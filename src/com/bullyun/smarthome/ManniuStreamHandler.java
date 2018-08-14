@@ -54,7 +54,7 @@ public class ManniuStreamHandler implements RequestStreamHandler {
                 String endpointId = jo.getJSONObject("directive").getJSONObject("endpoint").get("endpointId").toString();
                 // Get streaming response from rest
                 String videoUrl = CameraStream.getSteamUrl(token, endpointId);
-                String response = VideoStreamingResponse.getResponse(correlationToken, endpointId, "", videoUrl);
+                String response = VideoStreamingResponse.getResponse(correlationToken, endpointId, "www.baidu.com/img/bd_logo1.png", videoUrl);
 
                 logger.log("Get camera respones:");
                 logger.log(response);
