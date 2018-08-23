@@ -16,8 +16,8 @@ public class CameraStream {
         this.uri = uri;
         this.protocol = "RTSP";
         this.resolution = new Resolution(1920, 1080);
-        this.authorizationType = "NONE";
+        this.authorizationType = "BASIC";
         this.videoCodec = "H264";
-        this.audioCodec = "NONE";
+        this.audioCodec = "AAC";
     }
 }

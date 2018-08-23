@@ -48,7 +48,7 @@ public class ManniuStreamHandler implements RequestStreamHandler {
                 outputStream.write(byteResponse);
 
             } else if (requestType.equals("InitializeCameraStreams")) {
-                logger.log("get here!!!!!!!!!!!!!!!!!!!!!");
+                logger.log("Get camera stream!!!");
                 String correlationToken = jo.getJSONObject("directive").getJSONObject("header").get("correlationToken").toString();
                 String token = jo.getJSONObject("directive").getJSONObject("endpoint").getJSONObject("scope").get("token").toString();
                 String endpointId = jo.getJSONObject("directive").getJSONObject("endpoint").get("endpointId").toString();
@@ -56,7 +56,7 @@ public class ManniuStreamHandler implements RequestStreamHandler {
                 String videoUrl = CameraStream.getSteamUrl(token, endpointId);
                 String response = VideoStreamingResponse.getResponse(correlationToken, endpointId, "www.baidu.com/img/bd_logo1.png", videoUrl);
 
-                logger.log("Get camera respones:");
+                logger.log("Get camera streaming respones:");
                 logger.log(response);
                 logger.log("end logger!");
 
