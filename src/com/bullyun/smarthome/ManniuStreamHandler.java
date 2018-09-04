@@ -29,7 +29,7 @@ public class ManniuStreamHandler implements RequestStreamHandler {
         // 判断请求类型
         JSONObject jo = JSON.parseObject(request);
         LambdaLogger logger = context.getLogger();
-        logger.log("Get request:");
+        logger.log("【收到请求】");
         logger.log(request);
 
         try {
@@ -40,25 +40,22 @@ public class ManniuStreamHandler implements RequestStreamHandler {
                 ManniuDeviceList list = getDeviceList(token);
                 String response = DiscoverResponse.getResponse(list);
 
-                logger.log("Get respones:");
+                logger.log("【发现设备响应】:");
                 logger.log(response);
-                logger.log("end logger!");
 
                 byte[] byteResponse = response.getBytes("utf-8");
                 outputStream.write(byteResponse);
 
             } else if (requestType.equals("InitializeCameraStreams")) {
-                logger.log("Get camera stream!!!");
                 String correlationToken = jo.getJSONObject("directive").getJSONObject("header").get("correlationToken").toString();
                 String token = jo.getJSONObject("directive").getJSONObject("endpoint").getJSONObject("scope").get("token").toString();
                 String endpointId = jo.getJSONObject("directive").getJSONObject("endpoint").get("endpointId").toString();
                 // Get streaming response from rest
                 String videoUrl = CameraStream.getSteamUrl(token, endpointId);
-                String response = VideoStreamingResponse.getResponse(correlationToken, endpointId, "www.baidu.com/img/bd_logo1.png", videoUrl);
+                String response = VideoStreamingResponse.getResponse(correlationToken, endpointId, "https://www.baidu.com/img/bd_logo1.png", videoUrl);
 
-                logger.log("Get camera streaming respones:");
+                logger.log("【视频流响应】");
                 logger.log(response);
-                logger.log("end logger!");
 
                 byte[] byteResponse = response.getBytes("utf-8");
                 outputStream.write(byteResponse);
