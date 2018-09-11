@@ -2,6 +2,6 @@ package com.bullyun.smarthome.manniuResponse;
 
 public class CameraStream {
     public static String getSteamUrl(String token, String endPoint) {
-        return "rtsp://rtsp-v3-spbtv.msk.spbtv.com/spbtv_v3_1/214_110.sdp";
+        return "https://admin:123456@alexa.bullyun.com:443/H264?&tls&ch=1&subtype=0";
     }
 }
