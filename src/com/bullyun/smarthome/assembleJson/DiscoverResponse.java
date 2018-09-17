@@ -29,7 +29,7 @@ public class DiscoverResponse {
         CameraStreamConfiguration cameraStreamConfiguration = new CameraStreamConfiguration();
         CameraStreamConfiguration[] cameraStreamConfigurations = new CameraStreamConfiguration[]{cameraStreamConfiguration};
         discoverCapability.setCameraStreamConfigurations(cameraStreamConfigurations);
-        Resolution resolution1 = new Resolution(704, 576);
+        Resolution resolution1 = new Resolution(1920, 1080);
         Resolution[] resolutions = new Resolution[]{ resolution1 };
         cameraStreamConfiguration.setResolutions(resolutions);
 

@@ -11,13 +11,15 @@ public class CameraStream {
     private String authorizationType;
     private String videoCodec;
     private String audioCodec;
+    private int idleTimeoutSeconds;
 
     public CameraStream(String uri) {
         this.uri = uri;
         this.protocol = "RTSP";
-        this.resolution = new Resolution(704, 576);
-        this.authorizationType = "BASIC";
+        this.resolution = new Resolution(1920, 1080);
+        this.authorizationType = "NONE";
         this.videoCodec = "H264";
         this.audioCodec = "NONE";
+        this.idleTimeoutSeconds = 30;
     }
 }

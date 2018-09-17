@@ -12,7 +12,7 @@ public class CameraStreamConfiguration {
 
     public CameraStreamConfiguration() {
         this.protocols = new String[]{"RTSP"};
-        this.authorizationTypes = new String[]{"BASIC"};
+        this.authorizationTypes = new String[]{"NONE"};
         this.videoCodecs = new String[]{"H264"};
         this.audioCodecs = new String[]{"NONE"};
     }
