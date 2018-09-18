@@ -16,7 +16,6 @@ public class DeviceList {
         System.out.println(manniuUrl);
 
         String response = HttpClient.doGet(manniuUrl);
-        //System.out.println(response);
         JSONObject json = JSON.parseObject(response);
         ManniuDeviceList list = json.toJavaObject(ManniuDeviceList.class);
         return list;
