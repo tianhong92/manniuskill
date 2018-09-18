@@ -7,7 +7,6 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import static org.junit.Assert.*;
 
 public class ManniuStreamHandlerTest {
 
@@ -15,9 +14,9 @@ public class ManniuStreamHandlerTest {
     public void handleRequest() {
         ManniuStreamHandler handler = new ManniuStreamHandler();
         try {
-            StringInputStream inputStream = new StringInputStream(TestData.discoveryRequestContent());
+            StringInputStream inputStream = new StringInputStream(TestData.getStateReportRequest());
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            handler.handleRequest(inputStream, outputStream,null);
+            handler.handleRequest(inputStream, outputStream, null);
             String response = outputStream.toString();
             Assert.assertNotNull(response);
         } catch (IOException e) {

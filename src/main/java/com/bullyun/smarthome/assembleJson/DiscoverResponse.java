@@ -2,8 +2,8 @@ package com.bullyun.smarthome.assembleJson;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bullyun.smarthome.jsonObjects.discoverEvent.*;
-import com.bullyun.smarthome.jsonObjects.diviceList.ManniuDevice;
 import com.bullyun.smarthome.jsonObjects.diviceList.ManniuDeviceList;
+import com.bullyun.smarthome.jsonObjects.discoverEvent.DiscoverProperty;
 
 public class DiscoverResponse {
     public static String getResponse(ManniuDeviceList list) {
@@ -15,6 +15,7 @@ public class DiscoverResponse {
 
         EndPoint[] endPoints = new EndPoint[list.getDevices().length];
         DiscoverCapability discoverCapability = new DiscoverCapability("Alexa.CameraStreamController");
+        discoverCapability.setProperties(new DiscoverProperty("connectivity"));
         DiscoverCapability[] discoverCapabilities = new DiscoverCapability[]{discoverCapability};
 
         for(int i = 0; i < list.getDevices().length; i++) {

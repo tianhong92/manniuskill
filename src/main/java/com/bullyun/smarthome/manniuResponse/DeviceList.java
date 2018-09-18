@@ -2,7 +2,6 @@ package com.bullyun.smarthome.manniuResponse;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.bullyun.smarthome.jsonObjects.diviceList.ManniuDevice;
 import com.bullyun.smarthome.jsonObjects.diviceList.ManniuDeviceList;
 import com.bullyun.smarthome.util.HttpClient;
 
@@ -21,5 +20,14 @@ public class DeviceList {
         JSONObject json = JSON.parseObject(response);
         ManniuDeviceList list = json.toJavaObject(ManniuDeviceList.class);
         return list;
+    }
+
+    public static Integer getDeviceState(String access_token,String deviceSn){
+        String getUrl = String.format("%s/%s/online?app_key=%s&app_secret=%s&access_token=%s", url,deviceSn, app_key,
+                app_secret, access_token);
+
+        String response = HttpClient.doGet(getUrl);
+        JSONObject json = JSON.parseObject(response);
+        return json.getInteger("state");
     }
 }

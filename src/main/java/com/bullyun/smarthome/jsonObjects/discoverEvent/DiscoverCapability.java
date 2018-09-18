@@ -10,6 +10,7 @@ public class DiscoverCapability {
     private String interFace;
     private String version;
     private CameraStreamConfiguration[] cameraStreamConfigurations;
+    private DiscoverProperty properties;
 
     public DiscoverCapability(String interFace) {
         this.type = "AlexaInterface";

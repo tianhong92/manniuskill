@@ -241,4 +241,27 @@ public class TestData {
                 "}";
     }
 
+    public static String getStateReportRequest() {
+        return "{\n" +
+                "  \"directive\": {\n" +
+                "    \"header\": {\n" +
+                "      \"messageId\": \"abc-123-def-456\",\n" +
+                "      \"correlationToken\": \"abcdef-123456\",\n" +
+                "      \"namespace\": \"Alexa\",\n" +
+                "      \"name\": \"ReportState\",\n" +
+                "      \"payloadVersion\": \"3\"\n" +
+                "    },\n" +
+                "    \"endpoint\": {\n" +
+                "      \"endpointId\": \"MDAhAQEAbGUwNjFiMjIzOWNiYQAA\",\n" +
+                "      \"cookie\": {},\n" +
+                "      \"scope\":{\n" +
+                "            \"type\":\"BearerToken\",\n" +
+                "            \"token\":\"u_0c4793314dd8484cb59d53024f887c42\"\n" +
+                "      }\n" +
+                "    },\n" +
+                "    \"payload\": {\n" +
+                "    }\n" +
+                "  }\n" +
+                "}";
+    }
 }
