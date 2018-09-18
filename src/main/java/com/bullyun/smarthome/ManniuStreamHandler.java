@@ -25,9 +25,9 @@ public class ManniuStreamHandler implements RequestStreamHandler {
         String request = IOUtils.toString(inputStream);
         // 判断请求类型
         JSONObject jo = JSON.parseObject(request);
-//        LambdaLogger logger = context.getLogger();
-//        logger.log("【收到请求】");
-//        logger.log(request);
+        LambdaLogger logger = context.getLogger();
+        logger.log("【收到请求】");
+        logger.log(request);
 
         try {
             String requestType = jo.getJSONObject("directive").getJSONObject("header").get("name").toString();
@@ -39,8 +39,8 @@ public class ManniuStreamHandler implements RequestStreamHandler {
                 ManniuDeviceList list = getDeviceList(token);
                 response = DiscoverResponse.getResponse(list);
 
-//                logger.log("【发现设备响应】:");
-//                logger.log(response);
+                logger.log("【发现设备响应】:");
+                logger.log(response);
 
             } else if (requestType.equals("ReportState")) {
                 String token = jo.getJSONObject("directive").getJSONObject("endpoint").getJSONObject("scope")
@@ -53,8 +53,8 @@ public class ManniuStreamHandler implements RequestStreamHandler {
                 Integer state = getDeviceState(token, deviceSn);
                 response = StateResponse.getResponse(correlationToken, deviceSn, type, token, state);
 
-//                logger.log("【设备状态响应】:");
-//                logger.log(response);
+                logger.log("【设备状态响应】:");
+                logger.log(response);
 
             } else if (requestType.equals("InitializeCameraStreams")) {
                 String correlationToken = jo.getJSONObject("directive").getJSONObject("header").get("correlationToken")
@@ -68,8 +68,8 @@ public class ManniuStreamHandler implements RequestStreamHandler {
                 response = VideoStreamingResponse.getResponse(correlationToken, endpointId,
                         "https://alexa.bullyun.com/cgi-bin/snapshot.cgi?action=Enable", videoUrl);
 
-//                logger.log("【视频流响应】");
-//                logger.log(response);
+                logger.log("【视频流响应】");
+                logger.log(response);
             }
             byte[] byteResponse = response.getBytes("utf-8");
             outputStream.write(byteResponse);
