@@ -72,7 +72,7 @@ public class ManniuStreamHandler implements RequestStreamHandler {
                 logger.log(response);
             }
             byte[] byteResponse = response.getBytes("utf-8");
-            outputStream.write(byteResponse);
+                outputStream.write(byteResponse);
         } catch (NullPointerException e) {
             System.out.println("Parse Request: NullPointerException");
         }
