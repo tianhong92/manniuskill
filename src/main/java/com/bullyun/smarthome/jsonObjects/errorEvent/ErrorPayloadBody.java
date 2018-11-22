@@ -10,8 +10,9 @@ public class ErrorPayloadBody {
     private String type;
     private String message;
 
-    public ErrorPayloadBody() {
+    public ErrorPayloadBody(String message) {
         this.type = "ENDPOINT_UNREACHABLE";
-        this.message = "Please link your account again and make sure camera is on line";
+        //this.message = "Please link your account again and make sure camera is on line";
+        this.message = message;
     }
 }

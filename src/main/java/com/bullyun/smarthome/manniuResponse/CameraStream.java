@@ -29,7 +29,7 @@ public class CameraStream {
         } catch (IOException ignored) {
 
         }
-        String rtspUrl = String.format("%s?devName=%s&comInfo=%s&channelID=%s&streamID=%s&type=%s&sign=%s", url, endPoint, comInfo, channelID, streamID, type, sign);
+        String rtspUrl = String.format("%s?devName=%s&comInfo=%s&channelID=%s&streamID=%s&type=%s&sign=%s&access_token=%s", url, endPoint, comInfo, channelID, streamID, type, sign, token);
         String response = HttpClient.doGet(rtspUrl);
         return JSON.parseObject(response).get("rtspUrl").toString();
     }

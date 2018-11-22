@@ -7,6 +7,7 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 import com.amazonaws.util.IOUtils;
 import com.bullyun.smarthome.assembleJson.DiscoverResponse;
+import com.bullyun.smarthome.assembleJson.ErrorResponse;
 import com.bullyun.smarthome.assembleJson.StateResponse;
 import com.bullyun.smarthome.assembleJson.VideoStreamingResponse;
 import com.bullyun.smarthome.jsonObjects.diviceList.ManniuDeviceList;
@@ -28,10 +29,14 @@ public class ManniuStreamHandler implements RequestStreamHandler {
         LambdaLogger logger = context.getLogger();
         logger.log("【收到请求】");
         logger.log(request);
+        String correlationToken = null;
+        String endpointId = null;
 
         try {
             String requestType = jo.getJSONObject("directive").getJSONObject("header").get("name").toString();
             String response = null;
+
+            // 发现设备请求不会失败， 超时就不显示设备
             if (requestType.equals("Discover")) {
                 String token = jo.getJSONObject("directive").getJSONObject("payload").getJSONObject("scope")
                         .get("token").toString();
@@ -43,9 +48,10 @@ public class ManniuStreamHandler implements RequestStreamHandler {
                 logger.log(response);
 
             } else if (requestType.equals("ReportState")) {
+                endpointId = jo.getJSONObject("directive").getJSONObject("endpoint").get("endpointId").toString();;
                 String token = jo.getJSONObject("directive").getJSONObject("endpoint").getJSONObject("scope")
                         .getString("token");
-                String correlationToken = jo.getJSONObject("directive").getJSONObject("header")
+                correlationToken = jo.getJSONObject("directive").getJSONObject("header")
                         .getString("correlationToken");
                 String type = jo.getJSONObject("directive").getJSONObject("endpoint").getJSONObject("scope")
                         .getString("type");
@@ -57,11 +63,11 @@ public class ManniuStreamHandler implements RequestStreamHandler {
                 logger.log(response);
 
             } else if (requestType.equals("InitializeCameraStreams")) {
-                String correlationToken = jo.getJSONObject("directive").getJSONObject("header").get("correlationToken")
+                correlationToken = jo.getJSONObject("directive").getJSONObject("header").get("correlationToken")
                         .toString();
                 String token = jo.getJSONObject("directive").getJSONObject("endpoint").getJSONObject("scope")
                         .get("token").toString();
-                String endpointId = jo.getJSONObject("directive").getJSONObject("endpoint")
+                endpointId = jo.getJSONObject("directive").getJSONObject("endpoint")
                         .get("endpointId").toString();
                 // Get streaming response from rest
                 String videoUrl = CameraStream.getSteamUrl(token, endpointId);
@@ -74,7 +80,8 @@ public class ManniuStreamHandler implements RequestStreamHandler {
             byte[] byteResponse = response.getBytes("utf-8");
                 outputStream.write(byteResponse);
         } catch (NullPointerException e) {
-            System.out.println("Parse Request: NullPointerException");
+            logger.log("【没有响应】");
+            ErrorResponse.getResponse(correlationToken, "Please link your account again and make sure camera is on line", endpointId);
         }
     }
 }
