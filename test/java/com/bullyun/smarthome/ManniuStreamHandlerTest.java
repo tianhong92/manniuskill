@@ -10,6 +10,10 @@ import java.io.IOException;
 
 public class ManniuStreamHandlerTest {
 
+    private static final String url =  "http://54.245.190.187:10210/api/v1/devices";
+    private static final String app_key = "e788da8e88d04589";
+    private static final String app_secret = "d9d58f30ebe44585a6cabc1aabb7b5e5";
+
     @Test
     public void handleRequest() {
         ManniuStreamHandler handler = new ManniuStreamHandler();

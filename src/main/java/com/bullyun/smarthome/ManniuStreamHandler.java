@@ -71,6 +71,7 @@ public class ManniuStreamHandler implements RequestStreamHandler {
                         .get("endpointId").toString();
                 // Get streaming response from rest
                 String videoUrl = CameraStream.getSteamUrl(token, endpointId);
+                //String videoUrl = "rtsp://rtsp.bullyun.com:443/129b266930c91e44880512e929ae6d33_759458.sdp";
                 response = VideoStreamingResponse.getResponse(correlationToken, endpointId,
                         "https://alexa.bullyun.com/cgi-bin/snapshot.cgi?action=Enable", videoUrl);
 
@@ -79,9 +80,14 @@ public class ManniuStreamHandler implements RequestStreamHandler {
             }
             byte[] byteResponse = response.getBytes("utf-8");
                 outputStream.write(byteResponse);
-        } catch (NullPointerException e) {
-            logger.log("【没有响应】");
-            ErrorResponse.getResponse(correlationToken, "Please link your account again and make sure camera is on line", endpointId);
+        } catch (Exception e) {
+            logger.log("【没有响应】"+ correlationToken + ", " + endpointId);
+//            if(correlationToken != null && endpointId != null) {
+//                String res = ErrorResponse.getResponse(correlationToken, "Please link your account again and make sure camera is on line", endpointId);
+//                byte[] bytes = res.getBytes("utf-8");
+//                outputStream.write(bytes);
+//                logger.log(res);
+//            }
         }
     }
 }

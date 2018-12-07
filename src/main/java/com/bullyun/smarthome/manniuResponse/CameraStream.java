@@ -9,7 +9,8 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class CameraStream {
-    private static final String url = "http://121.40.248.246/RTMPLiveServer/LiveUrlServlet";
+    //private static final String url = "http://121.40.248.246/RTMPLiveServer/LiveUrlServlet";
+    private static final String url = "http://54.213.3.109/RTMPLiveServer/LiveUrlServlet";
     private static final String comInfo = "0";
     private static final String channelID = "0";
     private static final String streamID = "0";
