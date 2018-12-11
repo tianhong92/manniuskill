@@ -6,13 +6,13 @@ import com.bullyun.smarthome.jsonObjects.diviceList.ManniuDeviceList;
 import com.bullyun.smarthome.util.HttpClient;
 
 public class DeviceList {
-    private static final String url =  "http://120.27.148.199:10210/api/v1/devices";
-    private static final String app_key = "8Wa227sQ00S33p4y";
-    private static final String app_secret = "RlA8aCPlsuATT227kKTg003ncP35HYRI";
+//    private static final String url =  "http://120.27.148.199:10210/api/v1/devices";
+//    private static final String app_key = "8Wa227sQ00S33p4y";
+//    private static final String app_secret = "RlA8aCPlsuATT227kKTg003ncP35HYRI";
 
-//    private static final String url =  "http://rest.bullyun.com/api/v1/devices";
-//    private static final String app_key = "e788da8e88d04589";
-//    private static final String app_secret = "d9d58f30ebe44585a6cabc1aabb7b5e5";
+    private static final String url =  "http://rest.bullyun.com/api/v1/devices";
+    private static final String app_key = "e788da8e88d04589";
+    private static final String app_secret = "d9d58f30ebe44585a6cabc1aabb7b5e5";
 
 
     public static ManniuDeviceList getDeviceList(String access_token) {
