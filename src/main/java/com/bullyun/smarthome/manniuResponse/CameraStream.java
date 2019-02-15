@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class CameraStream {
     //private static final String url = "http://121.40.248.246/RTMPLiveServer/LiveUrlServlet";
-    private static final String url = "http://54.213.3.109/RTMPLiveServer/LiveUrlServlet";
+    private static final String url = "http://54.213.3.109/RTMPTest/LiveUrlServlet";
     private static final String comInfo = "0";
     private static final String channelID = "0";
     private static final String streamID = "0";
@@ -32,8 +32,7 @@ public class CameraStream {
         }
         String rtspUrl = String.format("%s?devName=%s&comInfo=%s&channelID=%s&streamID=%s&type=%s&sign=%s&access_token=%s", url, endPoint, comInfo, channelID, streamID, type, sign, token);
         String response = HttpClient.doGet(rtspUrl);
-        return response;
-        //return JSON.parseObject(response).get("rtspUrl").toString();
+        return JSON.parseObject(response).get("rtspUrl").toString();
     }
 }
 

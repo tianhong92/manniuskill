@@ -71,12 +71,9 @@ public class ManniuStreamHandler implements RequestStreamHandler {
                         .get("endpointId").toString();
                 // Get streaming response from rest
                 String videoUrl = CameraStream.getSteamUrl(token, endpointId);
-                logger.log("【状态】");
-                logger.log(videoUrl);
-                String rtspUrl = JSON.parseObject(videoUrl).get("rtspUrl").toString();
-                //String videoUrl = "rtsp://rtsp.bullyun.com:443/129b266930c91e44880512e929ae6d33_759458.sdp";
+                //String videoUrl = "rtsp://rtsp.push2u.com:443/test264.264";
                 response = VideoStreamingResponse.getResponse(correlationToken, endpointId,
-                        "https://alexa.bullyun.com/cgi-bin/snapshot.cgi?action=Enable", rtspUrl);
+                        "https://alexa.bullyun.com/cgi-bin/snapshot.cgi?action=Enable", videoUrl);
 
                 logger.log("【视频流响应】");
                 logger.log(response);
